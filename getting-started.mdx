@@ -1,0 +1,134 @@
+---
+title: Getting Started with Alchemetryx
+description: Set up your Alchemetryx account and complete your first data analysis session to begin uncovering insights quickly.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have the following ready:
+
+<Callout kind="info">
+
+- A business email address for account verification
+- A CSV dataset with at least 100 rows (e.g., sales data, customer metrics)
+- Modern web browser like Chrome or Firefox
+
+</Callout>
+
+Prepare your data in CSV format for optimal upload performance. Alchemetryx processes structured data like sales records or customer logs efficiently.
+
+## Create Your Alchemetryx Account
+
+Sign up takes under 2 minutes. Follow these steps to get started.
+
+<Steps>
+  <Step title="Visit Signup Page" icon="user-plus">
+    Navigate to `https://app.alchemetryx.com/signup`.
+  </Step>
+  <Step title="Fill Registration Form" icon="edit-3">
+    Enter your business email, company name, and create a strong password. Agree to terms.
+  </Step>
+  <Step title="Verify Email" icon="mail">
+    Check your inbox for a verification link from Alchemetryx and click it to activate your account.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Use your SME business domain email (e.g., you@yourcompany.co.uk) to unlock premium features for UK/India businesses.
+</Callout>
+
+## Log In and Explore the Dashboard
+
+Access your dashboard at `https://dashboard.alchemetryx.com`.
+
+<Tabs>
+  <Tab title="Web Login" icon="globe">
+    Enter your credentials on the login page. You'll land on the main dashboard showing recent analyses and upload options.
+  </Tab>
+  <Tab title="Bookmark Dashboard" icon="bookmark">
+    Save `https://dashboard.alchemetryx.com` for quick access. Enable two-factor authentication in settings for security.
+  </Tab>
+</Tabs>
+
+The dashboard includes sections for datasets, insights, and reports. Key areas:
+
+- **Datasets**: Manage uploaded files
+- **Insights**: Auto-generated charts and trends
+- **Reports**: Schedule exports
+
+## Upload Your First Dataset
+
+Upload data to start analysis. Alchemetryx supports CSV up to 50MB.
+
+<Steps>
+  <Step title="Prepare Sample Dataset" icon="file-text">
+    Create or export your data as CSV. Here's a realistic sales example:
+
+    <CodeGroup tabs="CSV Preview,Generate with Python">
+      ```csv
+      date,product,units_sold,revenue,region
+      2024-01-15,Laptop,5,2500,UK
+      2024-01-16,Mouse,20,200,India
+      2024-01-17,Keyboard,12,360,UK
+      2024-01-18,Monitor,8,3200,India
+      ```
+      ```python
+      import pandas as pd
+      data = {
+          'date': ['2024-01-15', '2024-01-16'],
+          'product': ['Laptop', 'Mouse'],
+          'units_sold': [5, 20],
+          'revenue': [2500, 200],
+          'region': ['UK', 'India']
+      }
+      df = pd.DataFrame(data)
+      df.to_csv('sales_data.csv', index=False)
+      print('CSV generated: sales_data.csv')
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Upload via Dashboard" icon="upload">
+    Click "Upload Dataset" on dashboard, drag-and-drop your CSV, or select file. Name it (e.g., "Q1 Sales") and click Upload.
+  </Step>
+  <Step title="Validate Upload" icon="check-circle">
+    Review the preview table. Alchemetryx auto-detects columns and data types. Fix issues if prompted.
+  </Step>
+</Steps>
+
+## Run Your First Data Exploration
+
+With data uploaded, explore insights in seconds.
+
+<Steps>
+  <Step title="Select Dataset" icon="database">
+    From Datasets list, click your file (e.g., "Q1 Sales").
+  </Step>
+  <Step title="Generate Insights" icon="zap">
+    Click "Analyze Now". Alchemetryx runs auto-insights: top products, revenue trends, regional breakdowns.
+  </Step>
+  <Step title="Customize Views" icon="bar-chart-3">
+    Filter by region (UK/India), add charts (bar/pie), or export as PDF.
+  </Step>
+</Steps>
+
+<Callout kind="success">
+  Congratulations! You've completed your first analysis. Insights appear in under 30 seconds.
+</Callout>
+
+## Next Steps
+
+Dive deeper with these resources:
+
+<Columns cols={3}>
+  <Card title="Data Integration" icon="link" href="#data-integration">
+    Connect live sources like Google Sheets.
+  </Card>
+  <Card title="Advanced Reports" icon="file-text" href="#reports">
+    Schedule automated insights.
+  </Card>
+  <Card title="Team Collaboration" icon="users" href="#collaboration">
+    Invite SME team members.
+  </Card>
+</Columns>
+
+Your Alchemetryx journey transforms data into decisions—explore more to scale your SME analytics.

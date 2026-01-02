@@ -1,0 +1,111 @@
+---
+title: Core Features of Alchemetryx
+description: Explore the essential tools and capabilities in Alchemetryx that help SMEs gain strategic clarity from their data.
+---
+
+## Overview
+
+Alchemetryx equips you with powerful tools to transform raw data into actionable insights. Within 30 days, you can visualize trends, forecast outcomes, and monitor key metrics through intuitive dashboards. These core features support SMEs in the UK and India by delivering data-driven decisions for sales, finance, and operations.
+
+<Columns cols={3}>
+  <Card title="Data Visualization" icon="bar-chart-3" href="#data-visualization">
+    Create interactive charts and reports from your datasets.
+  </Card>
+  <Card title="Predictive Analytics" icon="trending-up" href="#predictive-analytics">
+    Forecast business metrics with machine learning models.
+  </Card>
+  <Card title="Custom Dashboards" icon="monitor-dashboard" href="#custom-dashboards">
+    Build personalized views of your KPIs.
+  </Card>
+</Columns>
+
+## Data Visualization and Reporting Tools
+
+You generate compelling visualizations to uncover patterns in your data. Alchemetryx supports bar charts, line graphs, and heatmaps, pulling from CSV, SQL databases, or `https://api.example.com/data` endpoints.
+
+<CodeGroup tabs="Python,JavaScript">
+  ```python
+  import alchemetryx as alc
+  import pandas as pd
+
+  df = pd.read_csv('sales_data.csv')
+  viz = alc.Visualization(df)
+  viz.bar_chart(x='month', y='revenue', title='Monthly Revenue')
+  viz.export('revenue_report.png')
+  ```
+  ```javascript
+  import { Visualization } from '@alchemetryx/sdk';
+
+  const df = await fetch('https://api.example.com/sales').then(r => r.json());
+  const viz = new Visualization(df);
+  viz.barChart({ x: 'month', y: 'revenue', title: 'Monthly Revenue' });
+  viz.export('revenue_report.png');
+  ```
+</CodeGroup>
+
+<Callout kind="tip">
+  Start with sample datasets from your dashboard to test visualizations quickly.
+</Callout>
+
+## Predictive Analytics for Forecasting
+
+Leverage built-in ML models to predict sales, inventory needs, or customer churn. You upload historical data, select a model, and receive forecasts with confidence intervals.
+
+<Steps>
+  <Step title="Prepare Data" icon="database">
+    Upload your CSV or connect to `https://api.example.com/forecast`.
+  </Step>
+  <Step title="Select Model" icon="zap">
+    Choose from ARIMA, Prophet, or neural networks.
+  </Step>
+  <Step title="Generate Forecast" icon="trending-up">
+    Run the analysis and review predictions for the next 6 months.
+  </Step>
+</Steps>
+
+```mermaid
+graph LR
+    A[Historical Data] --> B[ML Model]
+    B --> C[Forecast Output]
+    C --> D[Business Decisions]
+```
+
+## Customizable Dashboards for Key Metrics
+
+Tailor dashboards to track revenue, customer acquisition, or operational efficiency. Drag-and-drop widgets connect to your data sources.
+
+<Tabs>
+  <Tab title="Sales Dashboard" icon="shopping-bag">
+    Monitor pipeline, conversion rates, and regional performance.
+
+    <ParamField path="sales.region" param-type="string" required="true">
+      Filter by UK or India markets.
+    </ParamField>
+  </Tab>
+  <Tab title="Finance Dashboard" icon="dollar-sign">
+    Track cash flow, expenses, and profitability margins.
+  </Tab>
+  <Tab title="Operations Dashboard" icon="settings">
+    View inventory levels and supply chain metrics.
+  </Tab>
+</Tabs>
+
+## Real-World Use Cases
+
+Apply Alchemetryx across departments for immediate impact.
+
+<ExpandableGroup>
+  <Expandable title="Sales Forecasting" default-open="true">
+    A UK retailer used predictive analytics to boost sales by 25% by anticipating demand spikes.
+  </Expandable>
+  <Expandable title="Finance Optimization">
+    An Indian SME reduced costs 15% through expense trend visualizations.
+  </Expandable>
+  <Expandable title="Operations Efficiency">
+    Track supplier performance to minimize delays.
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="success">
+  Integrate with `https://api.example.com` for real-time updates across all features.
+</Callout>

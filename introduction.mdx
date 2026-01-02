@@ -1,0 +1,97 @@
+---
+title: Introduction to Alchemetryx
+description: Discover Alchemetryx, the data analytics platform designed for UK and India-based SMEs to transform raw data into actionable insights in just 30 days.
+---
+
+## Overview
+
+Alchemetryx empowers UK and India-based SMEs to turn confusing data into strategic clarity. You gain data-driven insights that fuel informed business decisions, all within 30 days. Our platform simplifies analytics, making advanced tools accessible without needing a data science team.
+
+## Key Benefits
+
+Alchemetryx delivers targeted value for small and medium enterprises. Focus on growth while we handle the data complexity.
+
+<Columns cols={3}>
+  <Card title="Rapid Insights" icon="zap" href="#quick-start">
+    Transform raw data into actionable reports in under 30 days. Spot trends and opportunities faster than ever.
+  </Card>
+  <Card title="Cost-Effective" icon="dollar-sign" href="/quickstart">
+    Affordable analytics without hiring specialists. Scale your decisions with SME-friendly pricing.
+  </Card>
+  <Card title="Tailored for SMEs" icon="users" href="/authentication">
+    Customized for UK and India markets. Handle local regulations and business nuances seamlessly.
+  </Card>
+</Columns>
+
+## How Data Analytics Drives Your Decisions
+
+Data analytics uncovers hidden patterns in your sales, customer behavior, and operations. You identify top-performing products, optimize inventory, and predict demand shifts. Alchemetryx processes your CSV exports or database connections to generate visualizations and forecasts.
+
+For example, analyze sales data with simple Python code:
+
+<CodeGroup tabs="Python,R">
+```python
+import pandas as pd
+
+df = pd.read_csv('sales_data.csv')
+monthly_sales = df.groupby('month')['revenue'].sum()
+print(monthly_sales.head())
+```
+```r
+library(dplyr)
+
+sales <- read.csv('sales_data.csv')
+monthly_sales <- sales %>%
+  group_by(month) %>%
+  summarise(revenue = sum(revenue))
+head(monthly_sales)
+```
+</CodeGroup>
+
+<Callout kind="tip">
+Upload your data via the dashboard at https://dashboard.example.com to start analyzing immediately.
+</Callout>
+
+## Quick Start
+
+Get up and running in minutes.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your account at https://dashboard.example.com/signup. No credit card required for the trial.
+  </Step>
+  <Step title="Upload Data" icon="upload">
+    Connect your CSV, Google Sheets, or SQL database. Drag and drop files directly.
+  </Step>
+  <Step title="Generate Insights" icon="bar-chart-3">
+    Select your dataset and choose analysis type. Receive your first report within seconds.
+  </Step>
+</Steps>
+
+## Next Steps
+
+Ready to dive deeper?
+
+<Columns cols={2}>
+  <Card title="Quickstart Guide" icon="book-open" href="/quickstart">
+    Detailed setup instructions and your first analysis.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your account and API access.
+  </Card>
+</Columns>
+
+<Expandable title="Regional Focus: UK vs India" default-open="false">
+
+Alchemetryx adapts to your market:
+
+<Tabs>
+  <Tab title="UK SMEs" icon="map-pin">
+    Comply with GDPR effortlessly. Track VAT impacts on profitability.
+  </Tab>
+  <Tab title="India SMEs" icon="map-pin">
+    Handle GST calculations and rupee fluctuations. Optimize for festive season peaks.
+  </Tab>
+</Tabs>
+
+</Expandable>

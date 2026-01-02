@@ -1,0 +1,193 @@
+---
+title: Integrations and Connections
+description: Learn how to connect Alchemetryx with your existing tools and third-party services to streamline data workflows.
+---
+
+## Overview
+
+Alchemetryx integrates seamlessly with your existing data sources, enabling you to pull insights from databases, CRMs, and custom APIs. You configure connections through the dashboard at `https://dashboard.example.com/integrations`. Start by generating an API key from your account settings.
+
+<Callout kind="info">
+  All connections use secure HTTPS and support OAuth 2.0 where available. Review your data sync permissions before enabling.
+</Callout>
+
+## Supported Integrations
+
+Explore key integration categories to unify your data pipelines.
+
+<Columns cols={2}>
+  <Card title="Databases" icon="database" href="#databases">
+    Connect PostgreSQL, MySQL, and MongoDB for raw data extraction.
+  </Card>
+  <Card title="CRMs" icon="users" href="#crm">
+    Sync with Salesforce and HubSpot to track customer interactions.
+  </Card>
+  <Card title="Custom APIs" icon="zap" href="#api">
+    Build flexible integrations with any REST API endpoint.
+  </Card>
+  <Card title="Webhooks" icon="activity" href="#webhooks">
+    Receive real-time updates via incoming webhooks.
+  </Card>
+</Columns>
+
+## Connecting to Databases
+
+Follow these steps to connect a PostgreSQL database, a common choice for SMEs.
+
+<Steps>
+  <Step title="Generate Connection String" icon="key">
+    In your dashboard, navigate to Integrations > Databases. Enter your credentials.
+
+    <ParamField path="connectionString" param-type="string" required="true">
+      Format: `postgres://user:pass@host:5432/dbname`
+    </ParamField>
+  </Step>
+  <Step title="Test Connection" icon="check-circle">
+    Click Test to verify access. Alchemetryx queries a sample table like `users`.
+  </Step>
+  <Step title="Schedule Syncs" icon="clock">
+    Set sync frequency (hourly, daily) and select tables.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="Node.js,Python">
+  ```javascript
+  const { Alchemetryx } = require('alchemetryx-sdk');
+  const client = new Alchemetryx({ apiKey: 'YOUR_API_KEY' });
+  await client.integrations.connectDatabase({
+    type: 'postgres',
+    connectionString: 'postgres://user:pass@localhost:5432/salesdb'
+  });
+  ```
+  ```python
+  from alchemetryx import Client
+  client = Client(api_key='YOUR_API_KEY')
+  client.integrations.connect_database(
+      type='postgres',
+      connection_string='postgres://user:pass@localhost:5432/salesdb'
+  )
+  ```
+</CodeGroup>
+
+## CRM Integrations
+
+Switch between popular CRMs using these tabbed instructions.
+
+<Tabs>
+  <Tab title="Salesforce" icon="cloud">
+    Authorize via OAuth in the dashboard.
+
+    ```javascript
+    await client.integrations.connectCRM({
+      type: 'salesforce',
+      clientId: 'YOUR_CLIENT_ID',
+      redirectUri: 'https://dashboard.example.com/oauth/callback'
+    });
+    ```
+
+    <ParamField query="object" param-type="string" required="false">
+      Sync objects like `Account`, `Contact`, `Opportunity`.
+    </ParamField>
+  </Tab>
+  <Tab title="HubSpot" icon="package">
+    Use your API key from HubSpot settings.
+
+    ```javascript
+    await client.integrations.connectCRM({
+      type: 'hubspot',
+      apiKey: 'YOUR_HUBSPOT_API_KEY'
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## API Integrations
+
+Set up custom REST APIs with authenticated requests.
+
+<Request tabs="cURL,JavaScript" show-lines="true">
+  ```bash
+  curl -X POST https://api.example.com/v1/integrations/api \
+    -H "Authorization: Bearer YOUR_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "name": "Custom API",
+      "baseUrl": "https://yourapi.com",
+      "auth": {"type": "bearer", "token": "STATIC_TOKEN"}
+    }'
+  ```
+  ```javascript
+  await fetch('https://api.example.com/v1/integrations/api', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer YOUR_API_KEY',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'Custom API',
+      baseUrl: 'https://yourapi.com',
+      auth: { type: 'bearer', token: 'STATIC_TOKEN' }
+    })
+  });
+  ```
+</Request>
+
+<Response tabs="200">
+  ```json
+  {
+    "id": "int_123abc",
+    "status": "connected",
+    "syncSchedule": "hourly"
+  }
+  ```
+</Response>
+
+## Webhook Configurations
+
+Receive real-time data pushes from Alchemetryx.
+
+<Steps>
+  <Step title="Create Webhook" icon="plus">
+    In dashboard: Integrations > Webhooks > New.
+  </Step>
+  <Step title="Configure Endpoint" icon="link">
+    Provide your URL: `https://your-webhook-url.com/alchemetryx`.
+  </Step>
+  <Step title="Verify" icon="shield">
+    Respond with `200 OK` to the challenge ping.
+  </Step>
+</Steps>
+
+```mermaid
+sequenceDiagram
+  participant A as Alchemetryx
+  participant W as Your Webhook
+  A->>W: POST /webhook (data payload)
+  W->>A: 200 OK
+  Note over A,W: Retry on 5xx errors
+```
+
+## Best Practices for Secure Syncing
+
+<Callout kind="tip">
+  Rotate API keys quarterly. Use IP allowlisting for webhooks. Monitor sync logs in dashboard for anomalies.
+</Callout>
+
+- Limit data scopes to required fields only.
+- Enable encryption for sensitive databases.
+- Test failover with duplicate connections.
+
+<Expandable title="Advanced: Custom Transform Scripts" default-open="false">
+  Use Node.js scripts for data mapping:
+
+  ````javascript
+  module.exports = function transform(record) {
+    return {
+      ...record,
+      revenue_usd: record.revenue_gbp * 1.3
+    };
+  };
+  ````
+</Expandable>
+
+Next, explore [authentication](/authentication) for secure API access.

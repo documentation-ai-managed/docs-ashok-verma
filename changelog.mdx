@@ -1,0 +1,123 @@
+---
+title: Changelog
+description: Track the latest updates, improvements, and new features released in Alchemetryx to stay informed on platform enhancements.
+---
+
+## Recent Updates
+
+Stay current with Alchemetryx enhancements. You receive automatic updates in your dashboard. Review changes below to understand impacts on your data analytics workflows.
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Added real-time data streaming for live dashboards, enabling instant insights from UK and India sales pipelines.
+- Introduced AI-powered anomaly detection to flag unusual patterns in SME financial datasets.
+
+## Improvements
+
+- Enhanced report export speeds by 40% for large CSV and PDF files.
+
+## Bug Fixes
+
+- Fixed dashboard refresh errors when handling datasets >1GB.
+- Resolved authentication token expiry issues during long analysis sessions.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Launched multi-tenant support for shared workspaces, ideal for consulting firms serving multiple SMEs.
+- Integrated direct Google Sheets import for seamless data syncing.
+
+## Improvements
+
+- Optimized query performance on PostgreSQL backends by 25%.
+- Improved mobile responsiveness for on-the-go report viewing.
+
+## Bug Fixes
+
+- Corrected visualization rendering glitches in pie charts with zero values.
+- Patched webhook delivery failures for custom notification endpoints.
+
+</Update>
+
+<Update label="2024-08-05" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core analytics engine with predictive modeling for revenue forecasting.
+- Custom KPI builder for tailored SME metrics like customer acquisition cost.
+
+## Breaking Changes
+
+- Updated API authentication to use JWT tokens; migrate from API keys by regenerating via dashboard.
+
+## Initial Setup
+
+- First-time users: Run `npm install alchemetryx-sdk` to integrate.
+
+</Update>
+
+## Upgrade Process
+
+Follow these steps to ensure smooth updates across your deployments.
+
+<Steps>
+  <Step title="Check Compatibility" icon="check-circle">
+
+    Review your current version in the dashboard settings.
+
+    ```bash
+    curl https://api.alchemetryx.com/v1/version \
+      -H "Authorization: Bearer YOUR_TOKEN"
+    ```
+
+  </Step>
+  <Step title="Backup Data" icon="database">
+
+    Export critical datasets and reports.
+
+  </Step>
+  <Step title="Apply Update" icon="download">
+
+    Updates deploy automatically. Monitor status at `https://dashboard.alchemetryx.com/updates`.
+
+  </Step>
+  <Step title="Verify Integrations" icon="settings">
+
+    Test API endpoints and webhooks.
+
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Enable email notifications in your account settings to receive instant alerts on breaking changes.
+</Callout>
+
+## Upcoming Roadmap
+
+Explore planned enhancements to plan your analytics strategy.
+
+<Columns cols={3}>
+  <Card title="Q4 2024: ML Forecasting" icon="trending-up" href="/docs/forecasting">
+    Advanced machine learning models for 30-day predictions.
+  </Card>
+  <Card title="Q1 2025: Multi-Language Reports" icon="globe" href="/docs/reports">
+    Support for Hindi and regional UK dialects in visualizations.
+  </Card>
+  <Card title="Q2 2025: ERP Integrations" icon="package" href="/docs/integrations">
+    Native connectors for SAP and QuickBooks.
+  </Card>
+</Columns>
+
+<Tabs>
+  <Tab title="Priority Features" icon="star">
+    Focus on AI and performance to deliver clarity in 30 days.
+  </Tab>
+  <Tab title="Community Requests" icon="users">
+    Vote on features via the feedback portal at `https://dashboard.alchemetryx.com/feedback`.
+  </Tab>
+</Tabs>
